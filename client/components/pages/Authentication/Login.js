@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import {
-
   Text,
   View,
   StyleSheet,
-
   Image,
 } from 'react-native';
 import { Input } from '../../atoms/Input/Input';
 import { Button } from '../../atoms/Button/Button'
+import { connect } from 'react-redux'
+import { authenticate } from '../../../dux/actions/authActions'
 
 
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
     email: '',
     password: ''
@@ -24,7 +24,15 @@ export default class Login extends Component {
     })
   }
 
+  authenticateFirebase = () => {
+    const { email, password } = this.props
+    this.props.dispatchAuthenticate(email, password)
+  }
+
   render() {
+    const {
+      auth: { isAuthenticated, signInFailureMessage }
+    } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.heading}>
@@ -57,7 +65,7 @@ export default class Login extends Component {
         </View>
 
         <Button
-          // isLoading={isAuthenticating}
+          isLoading={isAuthenticated}
           title='Sign In'
           onPress={() => null}
         />
@@ -66,6 +74,16 @@ export default class Login extends Component {
   }
 }
 
+
+const mapStateToProps = state => ({
+    auth: state.auth
+})
+
+const mapDispatchToProps = {
+  dispatchAuthenticate: (email, password) => authenticate(email, password)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
 
 const styles = StyleSheet.create({
   modal: {

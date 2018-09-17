@@ -2,12 +2,12 @@ import * as firebase from 'firebase';
 
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyAbXc8dujyZeXAEHzhlUeqKQtQG7L_Q3zc",
-    authDomain: "auth-fire-911ab.firebaseapp.com",
-    databaseURL: "https://auth-fire-911ab.firebaseio.com",
-    projectId: "auth-fire-911ab",
-    storageBucket: "auth-fire-911ab.appspot.com",
-    messagingSenderId: "454722577928"
+    apiKey: "AIzaSyAWH7umiEpC8BOv4EZISujVyhnwbDMmoKE",
+    authDomain: "restaurantsocially-food.firebaseapp.com",
+    databaseURL: "https://restaurantsocially-food.firebaseio.com",
+    projectId: "restaurantsocially-food",
+    storageBucket: "restaurantsocially-food.appspot.com",
+    messagingSenderId: "98174883851"
 };
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp({...firebaseConfig});

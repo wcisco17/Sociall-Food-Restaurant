@@ -7,7 +7,7 @@ const initialState = {
     user: {},
     isAuthenticated: false,
 
-
+    tokenUser: {},
     signInFailure: false,
     signInSuccess: false,
 
@@ -40,7 +40,17 @@ export default function (state = initialState, action) {
                 signInSuccess: false,
                 signInFailureMessage: action.error
             }
-            default: 
+            case types.CURRENT_USER_INFO:
+            return {
+                ...state,
+                tokenUser: action.tokenUser
+            }
+            case types.LOG_OUT:
+            return {
+                ...state,
+                ...initialState
+            }
+            default:
                 return {
                     ...state,
                     ...initialState

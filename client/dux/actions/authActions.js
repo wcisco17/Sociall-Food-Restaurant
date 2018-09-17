@@ -1,8 +1,22 @@
 import * as types from '../contanst';
 import { Font } from 'expo'
 
-// import {firebase} from '../../utils/api/firebaseConfig'
 
+import * as firebase from 'firebase'
+
+
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAWH7umiEpC8BOv4EZISujVyhnwbDMmoKE",
+    authDomain: "restaurantsocially-food.firebaseapp.com",
+    databaseURL: "https://restaurantsocially-food.firebaseio.com",
+    projectId: "restaurantsocially-food",
+    storageBucket: "restaurantsocially-food.appspot.com",
+    messagingSenderId: "98174883851"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 export const loadFonts = () => {
     return async dispatch => {
@@ -53,3 +67,46 @@ export const authenticate = (email, password) => {
           })
     }
 }
+
+
+function logout() {
+    return {
+        type: types.LOG_OUT,
+    }
+}
+
+export const logOutUser = () => {
+    return dispatch => {
+        dispatch(logout())
+        firebase.auth().signOut()
+        .then((res) => {
+            console.log('Success', res)
+        })
+        .catch((err) => {
+            console.log('Error', err)
+        })
+    }
+}
+
+
+function getUser(tokenUser) {
+    return {
+        type: types.CURRENT_USER_INFO,
+        tokenUser
+    }
+}
+
+export const getUsersStatus = () => {
+    return (dispatch) => {
+        firebase.auth().onAuthStateChanged((user) => {
+            dispatch(loginSuccess(user))
+            if (user !== null) {
+             console.log("We are authenticated now!");
+             dispatch(getUser(user))
+            } else {
+                console.log('false not authenticated')
+            }
+          })
+    }
+}
+

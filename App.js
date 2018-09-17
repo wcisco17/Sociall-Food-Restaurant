@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import Index from './client/Index'
 
 
-
 export default class App extends React.Component {
     componentDidMount() {
       StatusBar.setHidden(true)
