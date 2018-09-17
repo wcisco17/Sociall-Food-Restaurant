@@ -14,7 +14,7 @@ import { authenticate } from '../../../dux/actions/authActions'
 
 class Login extends Component {
   state = {
-    email: '',
+    username: '',
     password: ''
   }
 
@@ -25,14 +25,14 @@ class Login extends Component {
   }
 
   authenticateFirebase = () => {
-    const { email, password } = this.props
-    this.props.dispatchAuthenticate(email, password)
+    const { username, password } = this.props
+    this.props.dispatchAuthenticate(username, password)
   }
 
   render() {
     const {
       auth: { isAuthenticated, signInFailureMessage }
-    } = this.props
+    } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.heading}>
@@ -51,9 +51,9 @@ class Login extends Component {
         <View style={styles.inputContainer}>
           <Input
             placeholder="Restaurant Email"
-            type='email'
+            type='username'
             onChangeText={this.onChangeText}
-            value={this.state.email}
+            value={this.state.username}
           />
           <Input
             placeholder="Password"
@@ -67,7 +67,7 @@ class Login extends Component {
         <Button
           isLoading={isAuthenticated}
           title='Sign In'
-          onPress={() => null}
+          onPress={() => this.authenticateFirebase()}
         />
       </View>
     );
@@ -80,7 +80,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  dispatchAuthenticate: (email, password) => authenticate(email, password)
+  dispatchAuthenticate: (username, password) => authenticate(username, password)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

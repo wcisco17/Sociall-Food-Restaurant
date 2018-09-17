@@ -53,17 +53,20 @@ function loginFailure(err) {
 }
 
 
-export const authenticate = (email, password) => {
+export const authenticate = (username, password) => {
     return (dispatch) => {
         dispatch(login())
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(username, password)
         .then((user) => {
                 dispatch(loginSuccess(user))
                 console.log("User Sign Up success", user)
         })
         .catch((err) => {
+            if (err) {
                 dispatch(loginFailure(error))
                 console.table('Error Sign Up', err);
+
+            }
           })
     }
 }
@@ -96,17 +99,17 @@ function getUser(tokenUser) {
     }
 }
 
-export const getUsersStatus = () => {
-    return (dispatch) => {
-        firebase.auth().onAuthStateChanged((user) => {
-            dispatch(loginSuccess(user))
-            if (user !== null) {
-             console.log("We are authenticated now!");
-             dispatch(getUser(user))
-            } else {
-                console.log('false not authenticated')
-            }
-          })
-    }
-}
+// export const getUsersStatus = () => {
+//     return (dispatch) => {
+//         firebase.auth().onAuthStateChanged((user) => {
+//             dispatch(loginSuccess(user))
+//             if (user !== null) {
+//              console.log("We are authenticated now!");
+//              dispatch(getUser(user))
+//             } else {
+//                 console.log('false not authenticated')
+//             }
+//           })
+//     }
+// }
 

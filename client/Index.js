@@ -1,23 +1,17 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from "react-redux";
 import Login from './components/pages/Authentication/Login'
-import { loadFonts, getUsersStatus } from "./dux/actions/authActions";
-import Home from './components/pages/Application/Home';
+import { loadFonts, } from "./dux/actions/authActions";
 
-
-
-
-
-
-
-
+import Navigation from './components/molecules/Navigation'
+import {Loader} from './components/organisms/Loader'
 
  class Index extends Component {
-     getStatus = this.props.dispatchGetUserStatus();
+    //  getStatus = this.props.dispatchGetUserStatus();
 
      async componentDidMount() {
          try {
-             await this.getStatus;
+            //  await this.getStatus;
              await this.props.dispatchLoadFonts();
          } catch (err) {
              console.log('Error', err)
@@ -26,17 +20,13 @@ import Home from './components/pages/Application/Home';
   render() {
     const { appStyles: { fontLoaded } } = this.props;
     const { auth: { user } } = this.props
-    if (fontLoaded) {
-            return <Login />
-     } else {
-         return null
-     }
+        return  fontLoaded && <Navigation />
   }
 }
 
 const mapDispatchToProps = {
     dispatchLoadFonts: () => loadFonts(),
-    dispatchGetUserStatus: () => getUsersStatus()
+    // dispatchGetUserStatus: () => getUsersStatus()
 }
 
 

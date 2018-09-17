@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-import { Text, View } from 'react-native'
-
+import { Text, View,StyleSheet } from 'react-native'
+import { TopContainer } from "../../organisms/TopContainer";
 
 
 export default class Home extends Component {
     render() {
         return (
-            <View>
-                <Text>Home Page</Text>
-            </View>
+            <TopContainer  header={`User's Feed`} />
         )
     }
 }
+
+
