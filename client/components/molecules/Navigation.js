@@ -16,18 +16,18 @@ const styles = StyleSheet.create({
   })
   
   const routes = {
-      QRCode: {
-        screen: QRCode,
-        navigationOptions: {
-          title: 'Scan Code',
-          tabBarIcon: ({ tintColor }) => (
-            <Image
-              source={require('../../utils/images/if_qr_code_1613767.png')}
-              style={[styles.icon, { tintColor }]}
-            />
-          )
-        }
-      },
+    QRCode: {
+      screen: QRCode,
+      navigationOptions: {
+        title: 'Scan Code',
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+            source={require('../../utils/images/if_qr_code_1613767.png')}
+            style={[styles.icon, { tintColor }]}
+          />
+        )
+      }
+    },
     Home: {
       screen: Home,
       navigationOptions: {

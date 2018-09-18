@@ -21,7 +21,8 @@ firebase.initializeApp(firebaseConfig);
 export const loadFonts = () => {
     return async dispatch => {
         await Font.loadAsync({
-            'montserrat': require('../../utils/fonts/Montserrat-Regular.ttf',)
+            'montserrat': require('../../utils/fonts/Montserrat-Regular.ttf'),
+            'montserrat-bold': require('../../utils/fonts/Montserrat-Bold.ttf')
         })
         dispatch({
             type: types.LOAD_FONTS,

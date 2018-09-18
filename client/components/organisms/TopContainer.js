@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
         position: 'relative',
         backgroundColor: '#ff6666',
         height: '11.5%',
-        borderBottomRightRadius: 10,
-        borderBottomLeftRadius: 10,
+        // borderBottomRightRadius: 10,
+        // borderBottomLeftRadius: 10,
     },
     header: {
         fontSize: 25,
