@@ -5,19 +5,6 @@ import { Font } from 'expo'
 import * as firebase from 'firebase'
 
 
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAWH7umiEpC8BOv4EZISujVyhnwbDMmoKE",
-    authDomain: "restaurantsocially-food.firebaseapp.com",
-    databaseURL: "https://restaurantsocially-food.firebaseio.com",
-    projectId: "restaurantsocially-food",
-    storageBucket: "restaurantsocially-food.appspot.com",
-    messagingSenderId: "98174883851"
-};
-
-firebase.initializeApp(firebaseConfig);
-
 export const loadFonts = () => {
     return async dispatch => {
         await Font.loadAsync({
